@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Dd row:</b>
+  <%= @dd_string_value.dd_row_id %>
+</p>
+
+<p>
+  <b>Dd string column:</b>
+  <%= @dd_string_value.dd_string_column_id %>
+</p>
+
+<p>
+  <b>Value:</b>
+  <%= @dd_string_value.value %>
+</p>
+
+
+<%= link_to 'Edit', edit_dd_string_value_path(@dd_string_value) %> |
+<%= link_to 'Back', dd_string_values_path %>

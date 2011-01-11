@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  dd_table_id: 1
+  dd_foreign_table_id: 1
+  name: MyString
+
+two:
+  dd_table_id: 1
+  dd_foreign_table_id: 1
+  name: MyString

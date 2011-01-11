@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Dd table:</b>
+  <%= @dd_fk_column.dd_table_id %>
+</p>
+
+<p>
+  <b>Dd foreign table:</b>
+  <%= @dd_fk_column.dd_foreign_table_id %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @dd_fk_column.name %>
+</p>
+
+
+<%= link_to 'Edit', edit_dd_fk_column_path(@dd_fk_column) %> |
+<%= link_to 'Back', dd_fk_columns_path %>

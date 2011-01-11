@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Dd table:</b>
+  <%= @dd_string_column.dd_table_id %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @dd_string_column.name %>
+</p>
+
+
+<%= link_to 'Edit', edit_dd_string_column_path(@dd_string_column) %> |
+<%= link_to 'Back', dd_string_columns_path %>

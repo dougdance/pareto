@@ -1,0 +1,27 @@
+<h1>Listing dd_string_values</h1>
+
+<table>
+  <tr>
+    <th>Dd row</th>
+    <th>Dd string column</th>
+    <th>Value</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @dd_string_values.each do |dd_string_value| %>
+  <tr>
+    <td><%= dd_string_value.dd_row_id %></td>
+    <td><%= dd_string_value.dd_string_column_id %></td>
+    <td><%= dd_string_value.value %></td>
+    <td><%= link_to 'Show', dd_string_value %></td>
+    <td><%= link_to 'Edit', edit_dd_string_value_path(dd_string_value) %></td>
+    <td><%= link_to 'Destroy', dd_string_value, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Dd string value', new_dd_string_value_path %>

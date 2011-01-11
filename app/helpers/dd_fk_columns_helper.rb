@@ -1,0 +1,2 @@
+module DdFkColumnsHelper
+end

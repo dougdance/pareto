@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Dd row:</b>
+  <%= @dd_fk_value.dd_row_id %>
+</p>
+
+<p>
+  <b>Dd fk column:</b>
+  <%= @dd_fk_value.dd_fk_column_id %>
+</p>
+
+<p>
+  <b>Value:</b>
+  <%= @dd_fk_value.value %>
+</p>
+
+
+<%= link_to 'Edit', edit_dd_fk_value_path(@dd_fk_value) %> |
+<%= link_to 'Back', dd_fk_values_path %>

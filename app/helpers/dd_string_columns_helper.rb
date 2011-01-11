@@ -1,0 +1,2 @@
+module DdStringColumnsHelper
+end

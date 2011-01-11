@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  dd_row_id: 1
+  dd_fk_column_id: 1
+  value: MyString
+
+two:
+  dd_row_id: 1
+  dd_fk_column_id: 1
+  value: MyString

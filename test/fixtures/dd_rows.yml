@@ -1,0 +1,7 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  dd_table_id: 1
+
+two:
+  dd_table_id: 1

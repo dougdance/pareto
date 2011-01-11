@@ -1,0 +1,21 @@
+<%= form_for(@dd_row) do |f| %>
+  <% if @dd_row.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@dd_row.errors.count, "error") %> prohibited this dd_row from being saved:</h2>
+
+      <ul>
+      <% @dd_row.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :dd_table_id %><br />
+    <%= f.text_field :dd_table_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

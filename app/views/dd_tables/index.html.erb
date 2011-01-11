@@ -1,0 +1,23 @@
+<h1>Listing dd_tables</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @dd_tables.each do |dd_table| %>
+  <tr>
+    <td><%= dd_table.name %></td>
+    <td><%= link_to 'Show', dd_table %></td>
+    <td><%= link_to 'Edit', edit_dd_table_path(dd_table) %></td>
+    <td><%= link_to 'Destroy', dd_table, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Dd table', new_dd_table_path %>

@@ -1,0 +1,41 @@
+= Pareto
+
+== Create a patient
+
+* Email is received from hospital with patient information
+* An employee creates the patient in the system and fills in patient information
+
+== Edit a patient
+
+* An employee can edit the patient's information
+* This will only write new data so that all changes are tracked
+
+== Patient internals
+
+* Attributes about a patient should not be hardcoded
+* Need a way to add attributes
+* Track changes made to each attribute
+* It seems like there is more patient information that is gathered at different times for different needs (financial aid info, meds not on discharge list, etc).  It would probably be good to know why each piece of information was collected.
+* Perhaps I need a record of actions taken for each patient, and then I can attach the patient information to each action.
+
+== Patient db schema
+
+* patients (id)
+* available_patient_attributes (id, name)
+* patient_attributes (id, patient_id, available_patient_attribute_id, value)
+
+== Make a call
+
+* An employee uses a call template to gather information during a call
+
+== Create a call
+
+* A call is just a record stating that a template is pending
+
+== Template / Section
+
+* A template is a workflow of steps with paths in the workflow based on the outcome of a step
+* A step in a template can be a template (minimizes duplication between templates)
+* Templates / Sections and Steps
+*# Patient info verification / updates
+*# Patient meds

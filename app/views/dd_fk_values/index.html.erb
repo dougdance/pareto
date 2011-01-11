@@ -1,0 +1,27 @@
+<h1>Listing dd_fk_values</h1>
+
+<table>
+  <tr>
+    <th>Dd row</th>
+    <th>Dd fk column</th>
+    <th>Value</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @dd_fk_values.each do |dd_fk_value| %>
+  <tr>
+    <td><%= dd_fk_value.dd_row_id %></td>
+    <td><%= dd_fk_value.dd_fk_column_id %></td>
+    <td><%= dd_fk_value.value %></td>
+    <td><%= link_to 'Show', dd_fk_value %></td>
+    <td><%= link_to 'Edit', edit_dd_fk_value_path(dd_fk_value) %></td>
+    <td><%= link_to 'Destroy', dd_fk_value, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Dd fk value', new_dd_fk_value_path %>
