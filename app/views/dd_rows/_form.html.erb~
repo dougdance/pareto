@@ -1,4 +1,4 @@
-<%= form_for(@dd_row, :url => @theurl) do |f| %>
+<%= form_for(@dd_row, :url => dd_table_dd_rows_path(@dd_table)) do |f| %>
   <% if @dd_row.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@dd_row.errors.count, "error") %> prohibited this dd_row from being saved:</h2>
@@ -11,14 +11,9 @@
     </div>
   <% end %>
 
-  <%= f.fields_for :dd_string_values do |_f| %>
-    <div class="field">
-      <%= _f.label :value, @columns[_f.object.dd_string_column_id] %><br />
-      <%= _f.text_field :value %>
-      <%= _f.hidden_field :dd_string_column_id %>
-    </div>
+  <% @dd_string_columns.each do |column| %>
+    <div class
   <% end %>
-  <%= f.hidden_field :dd_table_id %>
   <div class="actions">
     <%= f.submit %>
   </div>

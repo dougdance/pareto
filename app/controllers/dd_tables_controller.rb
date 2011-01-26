@@ -14,12 +14,14 @@ class DdTablesController < ApplicationController
   # GET /dd_tables/1.xml
   def show
     @dd_table = DdTable.find(params[:id])
+    build_table_data
 
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @dd_table }
     end
   end
+
 
   # GET /dd_tables/new
   # GET /dd_tables/new.xml
@@ -80,4 +82,33 @@ class DdTablesController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+  private
+
+    def build_table_data
+      @columns = @dd_table.dd_string_columns
+      column_id_to_index = map_id_to_index(@columns)
+
+      rows = @dd_table.dd_rows
+      row_id_to_index = map_id_to_index(rows)
+
+      @table_data = Array.new(rows.length) { Array.new(@columns.length) }
+
+      rows.each do |row|
+        i = row_id_to_index[row.id]
+        row.dd_string_values.each do |value|
+          j = column_id_to_index[value.dd_string_column_id]
+          @table_data[i][j] = value
+        end
+      end
+    end
+
+    def map_id_to_index(array)
+      id_to_index = {}
+      array.each_index do |i|
+        id_to_index[array[i].id] = i
+      end
+      id_to_index
+    end
+
 end

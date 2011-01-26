@@ -1,54 +1,51 @@
 class DdRowsController < ApplicationController
-  # GET /dd_rows
-  # GET /dd_rows.xml
-  def index
-    @dd_rows = DdRow.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @dd_rows }
-    end
-  end
-
-  # GET /dd_rows/1
-  # GET /dd_rows/1.xml
-  def show
-    @dd_row = DdRow.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @dd_row }
-    end
-  end
-
-  # GET /dd_rows/new
-  # GET /dd_rows/new.xml
   def new
+    @dd_table = DdTable.find(params[:dd_table_id])
+    @theurl = dd_table_dd_rows_path(@dd_table)
+    @columns = {}
+    dd_string_columns = @dd_table.dd_string_columns
     @dd_row = DdRow.new
+    @dd_row.dd_table_id = @dd_table.id
+    dd_string_values = []
+    dd_string_columns.each do |column|
+      value = DdStringValue.new
+      value.dd_string_column_id = column.id
+      dd_string_values.push(value) 
+      @columns[column.id] = column.name
+    end
+    @dd_row.dd_string_values = dd_string_values
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html
       format.xml  { render :xml => @dd_row }
     end
   end
 
-  # GET /dd_rows/1/edit
   def edit
+    @dd_table = DdTable.find(params[:dd_table_id])
+    @theurl = dd_table_dd_row_path(@dd_table)
+    @columns = {}
+    dd_string_columns = @dd_table.dd_string_columns
     @dd_row = DdRow.find(params[:id])
+    dd_string_columns.each do |column|
+      @columns[column.id] = column.name
+    end
+
+    respond_to do |format|
+      format.html
+      format.xml  { render :xml => @dd_row }
+    end
   end
 
-  # POST /dd_rows
-  # POST /dd_rows.xml
   def create
+    @dd_table = DdTable.find(params[:dd_table_id])
     @dd_row = DdRow.new(params[:dd_row])
 
     respond_to do |format|
       if @dd_row.save
-        format.html { redirect_to(@dd_row, :notice => 'Dd row was successfully created.') }
-        format.xml  { render :xml => @dd_row, :status => :created, :location => @dd_row }
+        format.html { redirect_to(@dd_table, :notice => 'Dd row was successfully created.') }
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @dd_row.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -56,11 +53,12 @@ class DdRowsController < ApplicationController
   # PUT /dd_rows/1
   # PUT /dd_rows/1.xml
   def update
+    @dd_table = DdTable.find(params[:dd_table_id])
     @dd_row = DdRow.find(params[:id])
 
     respond_to do |format|
       if @dd_row.update_attributes(params[:dd_row])
-        format.html { redirect_to(@dd_row, :notice => 'Dd row was successfully updated.') }
+        format.html { redirect_to(@dd_table, :notice => 'Dd row was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -72,11 +70,12 @@ class DdRowsController < ApplicationController
   # DELETE /dd_rows/1
   # DELETE /dd_rows/1.xml
   def destroy
+    @dd_table = DdTable.find(params[:dd_table_id])
     @dd_row = DdRow.find(params[:id])
     @dd_row.destroy
 
     respond_to do |format|
-      format.html { redirect_to(dd_rows_url) }
+      format.html { redirect_to(@dd_table, :notice => 'Dd row was successfully deleted.') }
       format.xml  { head :ok }
     end
   end

@@ -1,4 +1,8 @@
 Pareto::Application.routes.draw do
+  resources :workflows
+
+  resources :patients
+
   resources :dd_fk_values
 
   resources :dd_fk_columns
@@ -7,9 +11,9 @@ Pareto::Application.routes.draw do
 
   resources :dd_string_columns
 
-  resources :dd_rows
-
-  resources :dd_tables
+  resources :dd_tables do
+    resources :dd_rows
+  end
 
   root :to => 'pages#home'
 

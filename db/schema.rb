@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110109040935) do
+ActiveRecord::Schema.define(:version => 20110113053055) do
 
   create_table "dd_fk_columns", :force => true do |t|
     t.integer  "dd_table_id"
@@ -64,6 +64,13 @@ ActiveRecord::Schema.define(:version => 20110109040935) do
 
   create_table "dd_tables", :force => true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "patients", :force => true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

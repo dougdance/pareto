@@ -1,5 +1,6 @@
 <h1>New dd_row</h1>
 
+<%= @dd_table.name %>
 <%= render 'form' %>
 
-<%= link_to 'Back', dd_rows_path %>
+<%= link_to 'Back', dd_table_path(@dd_table) %>

@@ -1,0 +1,19 @@
+<table>
+  <tr>
+    <% @columns.each do |column| %>
+      <th><%= column.name %></th>
+    <% end %>
+    <th></th>
+  </tr>
+  <% @table_data.each do |row| %>
+    <tr>
+      <% row.each do |col| %>
+        <td><%= col.value unless col.blank? %>&nbsp;</td>
+      <% end %>
+      <td>
+        <%= link_to 'Edit', edit_dd_table_dd_row_path(@dd_table, row.first.dd_row_id) %>
+        <%= link_to 'Destroy', dd_table_dd_row_path(@dd_table, row.first.dd_row_id), :method => :delete %>
+      </td>
+    </tr>
+  <% end %>
+</table>

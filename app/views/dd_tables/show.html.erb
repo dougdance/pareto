@@ -5,6 +5,8 @@
   <%= @dd_table.name %>
 </p>
 
+<%= render 'table_view' %>
 
+<%= link_to 'New row', new_dd_table_dd_row_path(@dd_table) %>
 <%= link_to 'Edit', edit_dd_table_path(@dd_table) %> |
 <%= link_to 'Back', dd_tables_path %>
