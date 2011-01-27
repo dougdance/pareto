@@ -26,6 +26,7 @@ class DdTablesController < ApplicationController
   # GET /dd_tables/new
   # GET /dd_tables/new.xml
   def new
+    @submit_text = "Create"
     @dd_table = DdTable.new
 
     respond_to do |format|
@@ -58,6 +59,7 @@ class DdTablesController < ApplicationController
   # PUT /dd_tables/1
   # PUT /dd_tables/1.xml
   def update
+    @submit_text = "Update"
     @dd_table = DdTable.find(params[:id])
 
     respond_to do |format|

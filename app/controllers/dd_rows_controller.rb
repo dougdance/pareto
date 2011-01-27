@@ -1,7 +1,8 @@
 class DdRowsController < ApplicationController
   def new
     @dd_table = DdTable.find(params[:dd_table_id])
-    @theurl = dd_table_dd_rows_path(@dd_table)
+    @the_url = dd_table_dd_rows_path(@dd_table)
+    @submit_text = "Create"
     @columns = {}
     dd_string_columns = @dd_table.dd_string_columns
     @dd_row = DdRow.new
@@ -21,12 +22,16 @@ class DdRowsController < ApplicationController
     end
   end
 
+  # TODO - fix the problem where at edit time only the previously
+  # created columns are displayed, not any new ones
+  # and write tests
   def edit
+    @dd_row = DdRow.find(params[:id])
     @dd_table = DdTable.find(params[:dd_table_id])
-    @theurl = dd_table_dd_row_path(@dd_table)
+    @the_url = dd_table_dd_row_path(@dd_table)
+    @submit_text = "Update"
     @columns = {}
     dd_string_columns = @dd_table.dd_string_columns
-    @dd_row = DdRow.find(params[:id])
     dd_string_columns.each do |column|
       @columns[column.id] = column.name
     end
@@ -43,7 +48,7 @@ class DdRowsController < ApplicationController
 
     respond_to do |format|
       if @dd_row.save
-        format.html { redirect_to(@dd_table, :notice => 'Dd row was successfully created.') }
+        format.html { redirect_to(@dd_table, :notice => 'Row was successfully created.') }
       else
         format.html { render :action => "new" }
       end

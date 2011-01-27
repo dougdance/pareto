@@ -9,10 +9,9 @@ Pareto::Application.routes.draw do
 
   resources :dd_string_values
 
-  resources :dd_string_columns
-
   resources :dd_tables do
-    resources :dd_rows
+    resources :dd_rows, :except => [:index]
+    resources :dd_string_columns
   end
 
   root :to => 'pages#home'

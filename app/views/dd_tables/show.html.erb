@@ -1,12 +1,27 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
-  <%= @dd_table.name %>
-</p>
+<div>
+  <div>
+    <%= @dd_table.name %>
+  </div>
+  <div>
+    <%= link_to "Edit", edit_dd_table_path(@dd_table) %>
+  </div>
+  <div>
+    <%= link_to "Create a column", new_dd_table_dd_string_column_path(@dd_table) %>
+  </div>
+</div>
 
-<%= render 'table_view' %>
+<% create_link = link_to 'Create a row', new_dd_table_dd_row_path(@dd_table) %>
 
-<%= link_to 'New row', new_dd_table_dd_row_path(@dd_table) %>
-<%= link_to 'Edit', edit_dd_table_path(@dd_table) %> |
-<%= link_to 'Back', dd_tables_path %>
+<div>
+  <%= create_link %>
+</div>
+
+<div>
+  <%= render 'table_view' %>
+</div>
+
+<div>
+  <%= create_link %>
+</div>

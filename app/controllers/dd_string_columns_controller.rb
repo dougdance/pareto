@@ -24,8 +24,11 @@ class DdStringColumnsController < ApplicationController
   # GET /dd_string_columns/new
   # GET /dd_string_columns/new.xml
   def new
+    @dd_table = DdTable.find(params[:dd_table_id])
     @dd_string_column = DdStringColumn.new
-    @dd_tables = DdTable.all
+    @dd_string_column.dd_table_id = @dd_table.id
+    @the_url = dd_table_dd_string_columns_path(@dd_table)
+    @submit_text = "Create"
 
     respond_to do |format|
       format.html # new.html.erb
@@ -42,11 +45,12 @@ class DdStringColumnsController < ApplicationController
   # POST /dd_string_columns
   # POST /dd_string_columns.xml
   def create
+    @dd_table = DdTable.find(params[:dd_table_id])
     @dd_string_column = DdStringColumn.new(params[:dd_string_column])
 
     respond_to do |format|
       if @dd_string_column.save
-        format.html { redirect_to(@dd_string_column, :notice => 'Dd string column was successfully created.') }
+        format.html { redirect_to(@dd_table, :notice => 'Column was successfully created.') }
         format.xml  { render :xml => @dd_string_column, :status => :created, :location => @dd_string_column }
       else
         format.html { render :action => "new" }

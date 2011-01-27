@@ -1,5 +1,11 @@
-<h1>Editing dd_row</h1>
+<div>
+  Edit a row for <%= @dd_table.name %>
+</div>
 
-<%= render 'form' %>
+<div>
+  <%= render 'form' %>
+</div>
 
-<%= link_to 'Back', @dd_table %>
+<div>
+  <%= link_to 'Back to ' + @dd_table.name, @dd_table %>
+</div>

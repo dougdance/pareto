@@ -1,5 +1,7 @@
-<h1>New dd_string_column</h1>
+<div>
+  Create a Column for <%= @dd_table.name %>
+</div>
 
 <%= render 'form' %>
 
-<%= link_to 'Back', dd_string_columns_path %>
+<%= link_to 'Back to ' + @dd_table.name, @dd_table %>
